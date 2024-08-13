@@ -73,8 +73,7 @@ async def transcribe_audio(audio_url):
         response = await dg_client.transcription.prerecorded(source, {'smart_format': 'true', 'model': 'whisper-large'})
         print("deepgram response", response)
         paragraphs = response['results']['channels'][0]['alternatives'][0]['paragraphs']
-
-        return response['results']['channels'][0]['alternatives'][0]['paragraphs']['transcript']
+        return paragraphs['transcript']
     except Exception as e:
         print(f'Error transcribing audio: {e}')
         return 'Failed to transcribe audio.'
