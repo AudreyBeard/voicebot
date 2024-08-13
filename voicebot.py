@@ -25,7 +25,7 @@ async def on_message(message):
     print(f'Got a message {message}')
     if message.attachments:
         for attachment in message.attachments:
-            if attachment.filename.endswith('.ogg') or attachment.filename.endswith('.mp3') or attachment.filename.endswith('.wav') or attachment.filename.endswith('.m4a'):
+            if attachment.filename.endswith((".ogg", ".mp3", ".wav", ".m4a")):
                 print("message seems to have audio attachment")
                 audio_url = attachment.url
                 transcription = await transcribe_audio(audio_url)
